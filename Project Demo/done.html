@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Galaxys Cinema</title>
+    <meta charset=“utf-8”>
+<link rel="stylesheet" href="css.css">
+<style>
+div.container {
+      display:inline-block;
+    }
+	form{
+	text-align:left;
+	padding: 20px 10px 10px 10px;
+	}
+	label{
+	padding:10px 10px 10px 0px;
+	}
+	td{
+	padding:10px 10px 10px 0px;
+	}
+	</style>
+	<script type="text/javascript" src="formvalidation2.js"></script>
+	
+</head>
+<?php
+$servername = "localhost";
+$username = "f31ee";
+$password = "f31ee";
+$dbname = "f31ee";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {  //if not connected successfully
+    die("Connection failed: " . mysqli_connect_error());
+}  
+?>
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="login.html"><img src="galaxyslogo.jpg"  alt="Galaxys logo" width="280px" height="90px" style="padding:10px"></a>
+            <nav>
+
+				<a href="cart.html"><b>Cart</b></a>
+				<a href="contact.html"><b>Contact us</b></a>
+				<a href="carrers.html"><b>Careers with us</b></a>
+				<a href="Member.html"><b>Member Exclusives</b></a>
+				<a href="cinemas.html"><b>Cinemas</b></a>
+				
+                <div class="dropdown">
+                    <button class="dropbtn"><a href="index.html"><b>Movies&#8609;</b></a></button>
+                    <div class="dropdown-content">
+                        <a href="index.html"><b>Now Showing</b></a>
+						<a href="coming.html"><b>Coming Soon</b></a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+			<div>
+                <h2 style="padding-left:0px; letter-spacing:2.5px; text-align:center">Movie Selection & Personal Details</h2>
+            </div>
+            <form action="insert.php" method="post" id="demoForm">
+				<label>Select Movie:</label>
+                <select style="margin:00px 0px 10px 0px" name="movie">				
+					<option value="Iron Man">Iron Man</option>
+					<option value="The Revenent">The Revenent</option>
+				</select>
+				<br>
+				<label>Show Date:</label>
+				<select  style="margin:10px 0px 10px 0px" name="showdate">
+					<option value="5/12/2020">5/12/2020</option>
+					<option value="12/12/2020">12/12/2020</option>
+				</select>
+                <br>
+                <label>Show Time:</label>
+                <select style="margin:10px 0px 10px 0px" name="showtime">
+                    <option>7.00pm</option>
+                    <option>10.00pm</option>
+                </select>
+                <br>
+			    <label >No.of Ticket(s):</label>
+                <input type="number" class="quantity" placeholder="-" style="margin:10px 0px 10px 0px" name="quantity" id="quantity" min="1" max="100" onchange="totalprice()" required>
+                <br>
+                <label>First Name:</label>
+                <input type="text" placeholder="First Name" name="firstname" id="firstname" style="margin:10px 0px 10px 0px" required >
+                <br>
+                <label>Last Name:</label>
+                <input type="text" placeholder="Last Name" name="lastname" id="lastname" style="margin:10px 0px 10px 0px" required>
+                <br>
+                <label>Mobile Number:</label>
+                <input type="text" placeholder="Mobile Number" name="mobilenumber" id="mobilenumber" style="margin:10px 0px 10px 0px" required>
+                <br>
+                <label>Email:</label>
+                <input type="text" placeholder="Email" name="email" id="email" style="margin:10px 0px 10px 0px" required>
+				<input id="submitinfo" name="submitinfo" type="submit" value="Submit" class="submitinfo">				
+                <br>
+				<script type="text/javaScript" src="personalvalid.js"></script>
+            </form>
+<?php
+$name = $_POST['firstname'];
+$to      = $_POST['email'];
+$subject = 'Movie Recipt';
+$message = "Hi,".$name."These are your tickets.";
+$headers = 'From: f31ee@localhost' . "\r\n" .
+    'Reply-To: f31ee@localhost' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+
+mail($to, $subject, $message, $headers,'-ff31ee@localhost');
+echo ("mail sent to : ".$to);
+?> 
+
+        <footer>
+			<ul>
+				<li><a href="index.html"><b>Home</b></a></li>
+				<li><a href="cinemas.html"><b>Cinemas</b></a></li>
+				<li><a href="Member.html"><b>Member Exclusives</b></a></li>
+				<li><a href="carrers.html"><b>Careers with us</b></a></li>
+				<li><a href="contact.html"><b>Contact us</b></a></li>
+				<li><a href="cart.html"><b>Cart</b></a></li>
+			</ul>
+
+			<right><p>Follow Us:@GalaxysCinema</p></right>
+            <b><small>&copy; Copyright 2020 Galaxys Cinema - All rights Reserved.</small></b>
+			
+        </footer>
+    </div>
+</body>
+
+</html>

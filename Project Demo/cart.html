@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Galaxys Cinema</title>
+    <meta charset=“utf-8”>
+<link rel="stylesheet" href="css.css">
+<style>
+div.container {
+      display:inline-block;
+    }
+	
+	form { background-color:#FFFFFF;
+	font-family: Arial, sans-serif;
+	 width: 500px; padding: 10px;}
+	label { float: left; clear: left;
+	    display: block; width: 150px; 
+	    text-align: right; 
+	    padding-right: 30px;
+	    margin-top: 10px; }
+	input, textarea { margin-top: 10px; 
+                  display: block;}
+	#mySubmit {margin: 10px 0px 0px 180px;}
+	table{text-align:center;
+			margin-left:900px;
+			margin-top: -200px;
+			margin-bottom: 30px;
+			border-collapse: collapse;
+			border: 3px solid black;
+			}
+	td{padding: 10px 10px 10px 10px;}
+	#rightcolumn {
+            margin-left: 20px;
+            background-color: #FFFFFF;
+            color: #2D0000;
+        }
+		table {
+            margin: auto;
+            width: 1300px;
+            font-size: 1.0em;
+            font-weight: 800em;
+            padding: 10px 0px 0px 10px;
+			border-color: #FFFFFF
+        }
+        
+        td {
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            border-style: none;
+            color: #4A0C00;
+			text-align: left;
+        }
+		
+        
+        textarea {
+            resize: none;
+        }
+		.content { padding: 10px 20px 10px 20px; 
+} 
+	</style>
+	</style>
+    <script type="text/javascript" src="pricecalculation.js"></script>
+</head>
+<?php
+$servername = "localhost";
+$username = "f31ee";
+$password = "f31ee";
+$dbname = "f31ee";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {  //if not connected successfully
+    die("Connection failed: " . mysqli_connect_error());
+}  
+?>
+
+<?php
+//init connection
+$db = new mysqli('localhost', 'f31ee', 'f31ee', 'f31ee');
+//check connection
+if($db === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}    
+//query menu prices
+$query = "SELECT price FROM menu";
+$result = $db->query($query);
+$prices = [];
+while ($row = $result->fetch_assoc()) {
+    $prices[] = number_format($row['price'], 2);
+}
+?>
+<body>
+    <div id="wrapper">
+        <header>
+            <img src="galaxyslogo.jpg" alt="Galaxys logo" width="280px" height="90px" style="padding:10px">
+            <nav>
+
+				<a href="cart.html"><b>Cart</b></a>
+				<a href="contact.html"><b>Contact us</b></a>
+				<a href="carrers.html"><b>Careers with us</b></a>
+				<a href="Member.html"><b>Member Exclusives</b></a>
+				<a href="cinemas.html"><b>Cinemas</b></a>
+				
+                <div class="dropdown">
+                    <button class="dropbtn"><a href="index.html"><b>Movies&#8609;</b></a></button>
+                    <div class="dropdown-content">
+                        <a href="index.html"><b>Now Showing</b></a>
+						<a href="coming.html"><b>Coming Soon</b></a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+		
+			<div id="rightcolumn">
+<div class="content">
+	<h2><b>Cart</b></h2>
+		<form action="show_get.php" method="get" id="menuForm">
+		<table border="0">
+			<tr>
+				<th>Movie</th>
+				<th>Details</th>
+				<th>Quantity</th>
+				<th>Subtotal</th>
+			</tr>
+			<tr>
+				<th><img src="ironman.jpg" alt="Iron Man" width="240px" height="240" style="padding:10px 10px 10px 30px"></th>
+				<td style="padding:0px 0px 0px 50px">
+				<p>Movie Name: Iron Man</p>
+				<p>Time Slot: 02 November 2020, 0930PM</p>
+				<p>Cinema Location: GalaxysCinema, #02-05, 50 Jurong Gateway Rd&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+				Ticket Price: $9.00</td>
+				
+				<td style="padding: 0px 0px 0px 35px"><input type="number" name="JJquantity" id="JJquantity" onchange="getJJPrice(); getTotalPrice();" style="width: 50px;"></td>
+				<td style="padding: 0px 0px 0px 70px"><input type="text" name="JJcost" id="JJcost" style="width: 50px;" placeholder="0.00"></td>
+			</tr>
+			<tr>
+			<td></td>
+			</tr>
+			<tr>
+			<td><p> </p></td>
+			<td></td>
+				<td style="padding: 0px 10px 0px 10px">Total Price($)</td>
+				<td style="padding: 0px 0px 10px 10px"><input type="text" name="totalprice" id="totalprice" onchange="getTotalPrice()" rows="2" cols="4" placeholder="0.00"></td>
+				<td style="padding: 0px 0px 10px 10px"><input type="button" id="payment" value="Pay" onclick="location.href='done.html'"></td>
+			</tr>
+		</table>
+		</form>
+</div>
+</div>
+	
+
+
+        <footer>
+			<ul>
+				<li><a href="index.html"><b>Home</b></a></li>
+				<li><a href="cinemas.html"><b>Cinemas</b></a></li>
+				<li><a href="Member.html"><b>Member Exclusives</b></a></li>
+				<li><a href="carrers.html"><b>Careers with us</b></a></li>
+				<li><a href="contact.html"><b>Contact us</b></a></li>
+				<li><a href="cart.html"><b>Cart</b></a></li>
+			</ul>
+
+			<right><p>Follow Us:@GalaxysCinema</p></right>
+            <b><small>&copy; Copyright 2020 Galaxys Cinema - All rights Reserved.</small></b>
+			
+        </footer>
+    </div>
+</body>
+
+</html>

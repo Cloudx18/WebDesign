@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Galaxys Cinema</title>
+    <meta charset=“utf-8”>
+<link rel="stylesheet" href="css.css">
+<style>
+div.container {
+      display:inline-block;
+    }
+	
+	form { background-color:#FFFFFF;
+	font-family: Arial, sans-serif;
+	 width: 500px; padding: 10px;}
+	label { float: left; clear: left;
+	    display: block; width: 150px; 
+	    text-align: right; 
+	    padding-right: 30px;
+	    margin-top: 10px; }
+	input, textarea { margin-top: 10px; 
+                  display: block;}
+	#mySubmit {margin: 10px 0px 0px 180px;}
+	table{text-align:center;
+			margin-left:900px;
+			margin-top: -200px;
+			margin-bottom: 30px;
+			border-collapse: collapse;
+			border: 3px solid black;
+			}
+	td{padding: 10px 10px 10px 10px;}
+	</style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="login.html"><img src="galaxyslogo.jpg"  alt="Galaxys logo" width="280px" height="90px" style="padding:10px"></a>
+            <nav>
+
+				<a href="cart.html"><b>Cart</b></a>
+				<a href="contact.html"><b>Contact us</b></a>
+				<a href="carrers.html"><b>Careers with us</b></a>
+				<a href="Member.html"><b>Member Exclusives</b></a>
+				<a href="cinemas.html"><b>Cinemas</b></a>
+				
+                <div class="dropdown">
+                    <button class="dropbtn"><a href="index.html"><b>Movies&#8609;</b></a></button>
+                    <div class="dropdown-content">
+                        <a href="index.html"><b>Now Showing</b></a>
+						<a href="coming.html"><b>Coming Soon</b></a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+		
+			<div>
+			<form action="show_get.php" method="get" id="jobsForm">
+				<label>*Name:</label>
+				<input type="text" name="myname" id="myname" required>
+				<label>*E-mail:</label>
+				<input type="email" name="myemail" id="myemail" required>
+				<label>Phone Number:</label>
+				<input type="text" name="phonenumber" id="phonenumber" required>
+				<label>*Message:</label>
+				<textarea name="message" id="message" rows="2" cols="22" required></textarea><br>
+				<input id="mySubmit" type="submit" value="Submit" >
+				
+			</form>	
+			<table border="0">
+					<tr>
+						<td>Galaxys Cinema</td>
+					</tr>
+					<tr>
+						<td>50 Nanyang Ave, #09-11 South Spine, Singapore 639798</td>
+					</tr>
+					<tr>
+						<td><strong>Tel: </strong>+65 9618 1106</td>
+					</tr>
+					<tr>
+						<td><strong>Email: </strong>customersvc@galaxyscinema.com</td>
+					</tr>
+					<tr>
+						<td><strong>OPENING HOURS:</strong></td>
+					</tr>
+					<tr>
+						<td>Mon to Friday 9-6pm</td>
+					</tr>
+					<tr>
+						<td>Sat 9-3pm | Closed on Sun and PH</td>
+					</tr>
+			</table>
+			</div>
+			
+	
+
+
+        <footer>
+			<ul>
+				<li><a href="index.html"><b>Home</b></a></li>
+				<li><a href="cinemas.html"><b>Cinemas</b></a></li>
+				<li><a href="Member.html"><b>Member Exclusives</b></a></li>
+				<li><a href="carrers.html"><b>Careers with us</b></a></li>
+				<li><a href="contact.html"><b>Contact us</b></a></li>
+				<li><a href="cart.html"><b>Cart</b></a></li>
+			</ul>
+
+			<right><p>Follow Us:@GalaxysCinema</p></right>
+            <b><small>&copy; Copyright 2020 Galaxys Cinema - All rights Reserved.</small></b>
+			
+        </footer>
+    </div>
+</body>
+
+</html>
